@@ -4,6 +4,8 @@ const description = document.getElementById("description");
 
 const leftPanelList = document.querySelector(".jellybean-list")
 
+const image = document.querySelector(".card-img-top");
+
 axios.defaults.baseURL = 'https://jellybellywikiapi.onrender.com/api/Beans';
 
 
@@ -40,6 +42,9 @@ function fillLeftPanel(jellybeans) {
 
         button.addEventListener("click", () => {
             console.log(`Change Bean to: ${bean.flavorName}`);
+            image.src = bean.imageUrl;
+            title.textContent = bean.flavorName;
+            description.textContent = bean.description;
         }); 
 
         leftPanelList.appendChild(button);
