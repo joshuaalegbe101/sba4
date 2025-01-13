@@ -8,7 +8,9 @@ const image = document.querySelector(".card-img-top");
 
 axios.defaults.baseURL = 'https://jellybellywikiapi.onrender.com/api/Beans';
 
-const createBean = document.querySelector("btn-primary");
+const createBean = document.querySelector(".btn-primary");
+
+const mainContent = document.querySelector(".card");
 
 
 
@@ -56,3 +58,8 @@ function fillLeftPanel(jellybeans) {
 
 initialize();
 
+createBean.addEventListener("click", () => {
+    console.log(createBean); // Should log the button
+    console.log(mainContent);
+    mainContent.style.display = "none";
+});
