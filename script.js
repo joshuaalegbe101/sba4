@@ -44,7 +44,7 @@ function fillLeftPanel(jellybeans) {
             console.log(`Change Bean to: ${bean.flavorName}`);
             image.src = bean.imageUrl;
             title.textContent = bean.flavorName;
-            description.textContent = bean.description;
+            description.innerHTML = `${bean.description}<br><strong>Ingredients:</strong><br>${bean.ingredients}`
         }); 
 
         leftPanelList.appendChild(button);
