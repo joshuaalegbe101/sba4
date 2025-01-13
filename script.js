@@ -58,8 +58,28 @@ function fillLeftPanel(jellybeans) {
 
 initialize();
 
+//Form Button Pressed
 createBean.addEventListener("click", () => {
     console.log(createBean); // Should log the button
     console.log(mainContent);
     mainContent.style.display = "none";
+
+    const form = document.createElement("form");
+    form.id = "jellybeanForm";
+    form.innerHTML = `
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" placeholder="Enter title" required>
+      </div>
+      <div class="form-group">
+        <label for="body">Body</label>
+        <textarea class="form-control" id="body" rows="3" placeholder="Enter body" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="userId">User ID</label>
+        <input type="number" class="form-control" id="userId" placeholder="Enter user ID" required>
+      </div>
+      <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    `;
+    //form submit
 });
