@@ -62,7 +62,7 @@ initialize();
 createBean.addEventListener("click", () => {
     console.log(createBean); // Should log the button
     console.log(mainContent);
-    mainContent.style.display = "none";
+    //mainContent.style.display = "none";
 
     const form = document.createElement("form");
     form.id = "jellybeanForm";
@@ -81,5 +81,40 @@ createBean.addEventListener("click", () => {
       </div>
       <button type="submit" class="btn btn-primary mt-3">Submit</button>
     `;
-    //form submit
+
+    mainContent.innerHTML = "";
+    mainContent.appendChild(form);
+
+    form.addEventListener("submit", async () =>  {
+        const title = document.getElementById("title").value;
+        const body = document.getElementById("body").value;
+        const userId = document.getElementById("userId").value;
+
+        const payload = {
+            title,
+            body,
+            userId: parseInt(userId, 10), 
+          };
+    
+          // Send the POST request
+          try {
+            const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+              method: "POST",
+              body: JSON.stringify(payload),
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+              },
+            });
+    
+            const json = await response.json();
+            console.log("Response:", json);
+    
+            alert("Form submitted successfully!");
+            mainContent.style.display = "";
+            window.location.reload();
+          } catch (error) {
+            console.error(error);
+            alert("There was an error submitting the form.");
+          }
+    });
 });
