@@ -8,6 +8,8 @@ const image = document.querySelector(".card-img-top");
 
 axios.defaults.baseURL = 'https://jellybellywikiapi.onrender.com/api/Beans';
 
+const createBean = document.querySelector("btn-primary");
+
 
 
 async function initialize() {
@@ -52,5 +54,5 @@ function fillLeftPanel(jellybeans) {
     });
 }
 
-
 initialize();
+
