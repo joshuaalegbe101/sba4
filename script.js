@@ -33,11 +33,17 @@ async function initialize() {
 function fillLeftPanel(jellybeans) {
     jellybeans.forEach((bean) => {
         console.log(bean)
-        const listItem = document.createElement("li");
-        listItem.classList.add("list-group-item");
-        listItem.textContent = bean.flavorName;
-        listItem.dataset.beanId = bean.beanId;
-        leftPanelList.appendChild(listItem);
+        const button = document.createElement("button");
+        button.classList.add("list-group-item", "list-group-item-action");
+        button.textContent = bean.flavorName;
+        button.dataset.beanId = bean.beanId;
+
+        button.addEventListener("click", () => {
+            console.log(`Change Bean to: ${bean.flavorName}`);
+        }); 
+
+        leftPanelList.appendChild(button);
+
     });
 }
 
